@@ -5,15 +5,14 @@
   "description": "A flexible and simple boilerplate management tool",
   "author": "Jonathan Olaleye",
   "license": "MIT",
+  "bin": "./cli.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1"
   },
-  "repository": {
-    "type": "git",
-    "url": "git+https://github.com/jolaleye/spark.git"
-  },
-  "bugs": {
-    "url": "https://github.com/jolaleye/spark/issues"
-  },
+  "keywords": [
+    "cli", "boilerplate", "tool", "management"
+  ],
+  "repository": "github:jolaleye/spark",
+  "bugs": "https://github.com/jolaleye/spark/issues",
   "homepage": "https://github.com/jolaleye/spark#readme"
 }
