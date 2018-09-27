@@ -21,6 +21,7 @@
   "bugs": "https://github.com/jolaleye/spark/issues",
   "homepage": "https://github.com/jolaleye/spark#readme",
   "dependencies": {
+    "chalk": "^2.4.1",
     "commander": "^2.18.0"
   }
 }
