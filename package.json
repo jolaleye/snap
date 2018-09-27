@@ -1,11 +1,11 @@
 {
   "name": "spark",
   "version": "0.1.0",
-  "main": "cli.js",
+  "main": "spark.js",
   "description": "A flexible and simple boilerplate management tool",
   "author": "Jonathan Olaleye",
   "license": "MIT",
-  "bin": "./cli.js",
+  "bin": "./spark.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1"
   },
@@ -13,7 +13,9 @@
     "cli",
     "boilerplate",
     "tool",
-    "management"
+    "management",
+    "terminal",
+    "productivity"
   ],
   "repository": "github:jolaleye/spark",
   "bugs": "https://github.com/jolaleye/spark/issues",
