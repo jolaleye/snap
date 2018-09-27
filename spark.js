@@ -2,9 +2,11 @@
 
 const cli = require('commander');
 
+const package = require('./package.json');
+
 // cli info
 cli
-  .version('0.1.0', '-v, --version')
+  .version(package.version, '-v, --version')
   .usage('<command> [options]')
   .description('A flexible and simple boilerplate management tool');
 
@@ -12,8 +14,17 @@ cli
 // save - save a directory or repository to a name
 cli
   .command('save <name> [source]')
-  .description('save a directory or respository to a name')
-  .action((name, src) => {});
+  .usage('<name> [source] [options]')
+  .description('save a directory or respository')
+  .on('--help', () => {
+    console.log();
+    console.log();
+    console.log('  [source] can be...');
+    console.log('    - a local path relative to the current working directory: ./react-boilerplate');
+    console.log('    - a Git repository URL: https://github.com/jolaleye/spark.git');
+    console.log('  If no source is provided it will default to the current directory.')
+  })
+  .action((name, src, cmd) => {});
 
 
 // ls - list the available boilerplates
@@ -27,7 +38,7 @@ cli
 cli
   .command('show <name>')
   .description('display the file structure of a boilerplate')
-  .action((name) => {});
+  .action((name, cmd) => {});
 
 
 // parse arguments
