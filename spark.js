@@ -8,8 +8,12 @@ const package = require('./package.json');
 cli
   .version(package.version, '-v, --version')
   .usage('<command> [options]')
-  .description('A flexible and simple boilerplate management tool');
-
+  .on('--help', () => {
+    console.log();
+    console.log('If you have any problems, please file an issue:');
+    console.log('  https://github.com/jolaleye/spark/issues');
+    console.log();
+  });
 
 // save - save a directory or repository to a name
 cli
@@ -18,14 +22,13 @@ cli
   .description('save a directory or respository')
   .on('--help', () => {
     console.log();
+    console.log('[source] can be...');
+    console.log('  - a local path to a directory relative to the current directory: ./starter');
+    console.log('  - a Git repository URL: https://github.com/user/starter.git');
+    console.log('If no source is provided, it will default to the current directory.')
     console.log();
-    console.log('  [source] can be...');
-    console.log('    - a local path relative to the current working directory: ./react-boilerplate');
-    console.log('    - a Git repository URL: https://github.com/jolaleye/spark.git');
-    console.log('  If no source is provided it will default to the current directory.')
   })
-  .action((name, src, cmd) => {});
-
+  .action((name, src, options) => {});
 
 // ls - list the available boilerplates
 cli
@@ -33,13 +36,19 @@ cli
   .description('list the available boilerplates')
   .action(() => {});
 
-
 // show - display the file structure of a boilerplate
 cli
   .command('show <name>')
+  .usage('<name> [options]')
   .description('display the file structure of a boilerplate')
-  .action((name, cmd) => {});
+  .action((name, options) => {});
 
+// rm - remove a saved boilerplate
+cli
+  .command('rm <name>')
+  .usage('<name> [options]')
+  .description('remove a saved boilerplate')
+  .action((name, options) => {});
 
 // parse arguments
 cli.parse(process.argv);
