@@ -1,17 +1,18 @@
 #!/usr/bin/env node
 
 const cli = require('commander');
+const chalk = require('chalk');
 
 const package = require('./package.json');
 
 // cli info
 cli
   .version(package.version, '-v, --version')
-  .usage('<command> [options]')
+  .usage('<command>')
   .on('--help', () => {
     console.log();
     console.log('If you have any problems, please file an issue:');
-    console.log('  https://github.com/jolaleye/spark/issues');
+    console.log(`  ${chalk.cyan('https://github.com/jolaleye/spark/issues')}`);
     console.log();
   });
 
@@ -22,9 +23,9 @@ cli
   .description('save a directory or respository')
   .on('--help', () => {
     console.log();
-    console.log('[source] can be...');
-    console.log('  - a local path to a directory relative to the current directory: ./starter');
-    console.log('  - a Git repository URL: https://github.com/user/starter.git');
+    console.log(`${chalk.magenta('[source]')} can be...`);
+    console.log(`  - a local path to a directory relative to the current directory: ${chalk.cyan('./starter')}`);
+    console.log(`  - a Git repository URL: ${chalk.cyan('https://github.com/user/starter.git')}`);
     console.log('If no source is provided, it will default to the current directory.')
     console.log();
   })
