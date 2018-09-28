@@ -8,28 +8,38 @@ const package = require('./package.json');
 // cli info
 cli
   .version(package.version, '-v, --version')
-  .usage('<command>')
+  .usage(`${chalk.green('<command>')} ${chalk.gray('or')} spark ${chalk.green('<boilerplate-name> <project-directory>')}`)
   .on('--help', () => {
+    console.log();
+    console.log('For example, if you wanted to save and use a boilerplate for React projects...');
+    console.log(`  spark save react https://github.com/user/react-starter.git`);
+    console.log(`  spark react my-project`);
+    console.log('  cd my-project')
     console.log();
     console.log('If you have any problems, please file an issue:');
     console.log(`  ${chalk.cyan('https://github.com/jolaleye/spark/issues')}`);
     console.log();
   });
 
+// spark up a new project
+cli
+  .arguments('<boilerplate-name> <project-directory>')
+  .action((boilerplate, name) => {});
+
 // save - save a directory or repository to a name
 cli
   .command('save <name> [source]')
-  .usage('<name> [source] [options]')
+  .usage(`${chalk.green('<name>')} ${chalk.greenBright('[source]')} [options]`)
   .description('save a directory or respository')
   .on('--help', () => {
     console.log();
-    console.log(`${chalk.magenta('[source]')} can be...`);
+    console.log(`${chalk.greenBright('[source]')} can be...`);
     console.log(`  - a local path to a directory relative to the current directory: ${chalk.cyan('./starter')}`);
     console.log(`  - a Git repository URL: ${chalk.cyan('https://github.com/user/starter.git')}`);
     console.log('If no source is provided, it will default to the current directory.')
     console.log();
   })
-  .action((name, src, options) => {});
+  .action((name, src) => {});
 
 // ls - list the available boilerplates
 cli
@@ -40,16 +50,17 @@ cli
 // show - display the file structure of a boilerplate
 cli
   .command('show <name>')
-  .usage('<name> [options]')
+  .usage(`${chalk.green('<name>')} [options]`)
   .description('display the file structure of a boilerplate')
-  .action((name, options) => {});
+  .action((name) => {});
 
-// rm - remove a saved boilerplate
+// delete - delete a saved boilerplate
 cli
-  .command('rm <name>')
-  .usage('<name> [options]')
-  .description('remove a saved boilerplate')
-  .action((name, options) => {});
+  .command('delete <name>')
+  .alias('rm')
+  .usage(`${chalk.green('<name>')} [options]`)
+  .description('delete a saved boilerplate')
+  .action((name) => {});
 
 // parse arguments
 cli.parse(process.argv);
