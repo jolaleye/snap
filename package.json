@@ -7,7 +7,7 @@
   "license": "MIT",
   "bin": "./spark.js",
   "scripts": {
-    "postinstall": "node scripts/install.js",
+    "postinstall": "node scripts/init.js",
     "preuninstall": "node scripts/uninstall.js"
   },
   "keywords": [
