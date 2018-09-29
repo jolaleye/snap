@@ -29,7 +29,7 @@ cli
 // save - save a directory or repository to a name
 cli
   .command('save <name> [source]')
-  .usage(`${chalk.green('<name>')} ${chalk.greenBright('[source]')} [options]`)
+  .usage(`${chalk.green('<name>')} ${chalk.greenBright('[source]')}`)
   .description('save a directory or respository')
   .on('--help', () => {
     console.log();
@@ -44,13 +44,14 @@ cli
 // ls - list the available boilerplates
 cli
   .command('ls')
+  .usage(' ')
   .description('list the available boilerplates')
   .action(() => {});
 
 // show - display the file structure of a boilerplate
 cli
   .command('show <name>')
-  .usage(`${chalk.green('<name>')} [options]`)
+  .usage(`${chalk.green('<name>')}`)
   .description('display the file structure of a boilerplate')
   .action((name) => {});
 
