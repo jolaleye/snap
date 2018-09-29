@@ -56,11 +56,16 @@ cli
 
 // delete - delete a saved boilerplate
 cli
-  .command('delete <name>')
+  .command('delete <names...>')
   .alias('rm')
-  .usage(`${chalk.green('<name>')} [options]`)
+  .usage(`${chalk.green('<names...>')}`)
   .description('delete a saved boilerplate')
-  .action((name) => {});
+  .on('--help', () => {
+    console.log();
+    console.log(`${chalk.green('<names...>')} can be one or multiple names of saved boilerplates.`);
+    console.log();
+  })
+  .action((names) => {});
 
 // parse arguments
 cli.parse(process.argv);
