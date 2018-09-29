@@ -23,6 +23,7 @@
   "homepage": "https://github.com/jolaleye/spark#readme",
   "dependencies": {
     "chalk": "^2.4.1",
-    "commander": "^2.18.0"
+    "commander": "^2.18.0",
+    "fs-extra": "^7.0.0"
   }
 }
