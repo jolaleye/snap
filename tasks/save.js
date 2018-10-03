@@ -17,7 +17,7 @@ const save = async (name, { src, type }) => {
     fs.copy(src, saveLocation, { overwrite: false, errorOnExist: true })
       .then(() => {
         success();
-        removeGit();
+        clean();
       })
       .catch(error);
   } else if (type === 'git') {
@@ -25,21 +25,24 @@ const save = async (name, { src, type }) => {
     shell.exec(`git clone -q ${src} ${saveLocation}`, exitCode => {
       if (exitCode === 0) {
         success();
-        removeGit();
+        clean();
       } else {
         error();
       }
     });
   }
 
-  // remove the boilerplate's git repo
-  async function removeGit() {
-    const repoExists = await fs.pathExists(path.resolve(saveLocation, '.git'));
-    if (!repoExists) return;
-  
-    fs.remove(path.resolve(saveLocation, '.git'))
-      .then(() => console.log('.git has been removed from your new boilerplate.\n'))
-      .catch(err => console.error(err));
+  // remove blacklisted contents from the boilerplate
+  async function clean() {
+    const blacklist = ['.git', 'node_modules'];
+    blacklist.forEach(async item => {
+      const match = await fs.pathExists(path.resolve(saveLocation, item));
+      if (match) {
+        fs.remove(path.resolve(saveLocation, item))
+          .then(() => console.log(`${item} has been removed from "${name}"`))
+          .catch(err => console.error(err));
+      }
+    });
   }
 
   // save successful
