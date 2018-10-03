@@ -11,15 +11,12 @@ cli
   .version(package.version, '-v, --version')
   .usage(`${chalk.green('<command>')} ${chalk.gray('or')} spark ${chalk.green('<boilerplate-name> <project-directory>')}`)
   .on('--help', () => {
-    console.log();
-    console.log('For example, if you wanted to save and use a boilerplate for React projects...');
+    console.log('\nFor example, if you wanted to save and use a boilerplate for React projects...');
     console.log(`  spark save react https://github.com/user/react-starter.git`);
     console.log(`  spark react my-project`);
-    console.log('  cd my-project')
-    console.log();
+    console.log('  cd my-project\n');
     console.log('If you have any problems, please file an issue:');
-    console.log(`  ${chalk.cyan('https://github.com/jolaleye/spark/issues')}`);
-    console.log();
+    console.log(`  ${chalk.cyan('https://github.com/jolaleye/spark/issues')}\n`);
   });
 
 // spark up a new project
@@ -33,12 +30,10 @@ cli
   .usage(`${chalk.green('<name>')} ${chalk.greenBright('[source]')}`)
   .description('save a directory or respository')
   .on('--help', () => {
-    console.log();
-    console.log(`${chalk.greenBright('[source]')} can be...`);
+    console.log(`\n${chalk.greenBright('[source]')} can be...`);
     console.log(`  - a local path to a directory relative to the current directory: ${chalk.cyan('./starter')}`);
     console.log(`  - a Git repository URL: ${chalk.cyan('https://github.com/user/starter.git')}`);
-    console.log('If no source is provided, it will default to the current directory.')
-    console.log();
+    console.log('If no source is provided, it will default to the current directory.\n');
   })
   .action(save);
 
@@ -63,9 +58,7 @@ cli
   .usage(`${chalk.green('<names...>')}`)
   .description('delete a saved boilerplate')
   .on('--help', () => {
-    console.log();
-    console.log(`${chalk.green('<names...>')} can be one or multiple names of saved boilerplates.`);
-    console.log();
+    console.log(`\n${chalk.green('<names...>')} can be one or multiple names of saved boilerplates.\n`);
   })
   .action((names) => {});
 
