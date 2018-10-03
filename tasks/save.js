@@ -65,7 +65,7 @@ module.exports = async (name, src = path.resolve()) => {
 
   // check if the source is a valid git url
   const gitUrl = /((git|ssh|http(s)?)|(git@[\w.]+))(:(\/\/)?)([\w.@:/\-~]+)(\.git)(\/)?/;
-  const validGit = src.match(gitUrl);
+  const validGit = gitUrl.test(src);
   if (validGit) return save(name, { src, type: 'git' });
 
   // if the source was invalid
