@@ -4,6 +4,7 @@ const cli = require('commander');
 const chalk = require('chalk');
 
 const package = require('./package.json');
+const save = require('./tasks/save');
 
 // cli info
 cli
@@ -39,7 +40,7 @@ cli
     console.log('If no source is provided, it will default to the current directory.')
     console.log();
   })
-  .action((name, src) => {});
+  .action(save);
 
 // ls - list the available boilerplates
 cli
