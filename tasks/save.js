@@ -1,77 +1,63 @@
 const path = require('path');
-const fs = require('fs-extra');
 const os = require('os');
+const fs = require('fs-extra');
 const chalk = require('chalk');
 const shell = require('shelljs');
 
-// save a directory or repository provided by [source] to a <name>
-const save = async (name, { src, type }) => {
-  // ensure that the vault has been initialized
-  const vaultExists = await fs.pathExists(path.resolve(os.homedir(), '.spark'));
+// spark save <name> [source]
+// save a directory or repository provided by [source] to .spark/<name>
+function save(name, src = path.resolve()) {
+  // ensure that the vault exists
+  const vaultExists = fs.pathExistsSync(path.resolve(os.homedir(), '.spark'));
   if (!vaultExists) shell.exec(`node ${path.resolve(__dirname, 'init.js')}`);
 
-  const saveLocation = path.resolve(os.homedir(), '.spark', name);
+  const root = path.resolve(os.homedir(), '.spark', name);
 
-  if (type === 'path') {
-    // the source provided was a valid path
-    fs.copy(src, saveLocation, { overwrite: false, errorOnExist: true })
-      .then(() => {
-        success();
-        clean();
-      })
-      .catch(error);
-  } else if (type === 'git') {
-    // the source provided was a valid git url (repo may or may not exist)
-    shell.exec(`git clone -q ${src} ${saveLocation}`, exitCode => {
-      if (exitCode === 0) {
-        success();
-        clean();
-      } else {
-        error();
-      }
-    });
+  // check if the source provided resolves to a valid path
+  const sourcePath = path.resolve(src);
+  const pathExists = fs.pathExistsSync(sourcePath);
+  if (pathExists) {
+    fs.copySync(src, root, { overwrite: false, errorOnExist: true });
+    logSuccess(name);
+    clean(root, name);
+    return;
   }
 
-  // remove blacklisted contents from the boilerplate
-  async function clean() {
-    const blacklist = ['.git', 'node_modules'];
-    blacklist.forEach(async item => {
-      const match = await fs.pathExists(path.resolve(saveLocation, item));
-      if (match) {
-        fs.remove(path.resolve(saveLocation, item))
-          .then(() => console.log(`${item} has been removed from "${name}"`))
-          .catch(err => console.error(err));
-      }
-    });
-  }
-
-  // save successful
-  function success() {
-    console.log(chalk.green('\nSuccess! ＼(＾O＾)／'));
-    console.log(`You can now use ${chalk.green(`spark ${name} <project-directory>`)} to use your new boilerplate!\n`);
-  }
-
-  // Houston, we have a problem
-  function error(err) {
-    if (err) console.error(err);
-    console.error(chalk.redBright('\nSomething went wrong :('));
-    console.log(`  - Make sure there isn\'t already a boilerplate saved with that name. You can check with ${chalk.green('spark ls')}.`);
-    console.log(`  - If you wanted to save a Git repo, make sure that the Git URL is correct.\n`);
-  }
-};
-
-// spark save <name> [source]
-module.exports = async (name, src = path.resolve()) => {
-  // check if the source resolves to a valid path
-  const pathExists = await fs.pathExists(path.resolve(src));
-  if (pathExists) return save(name, { src: path.resolve(src), type: 'path' });
-
-  // check if the source is a valid git url
+  // check if the source provided is a valid git url
   const gitUrl = /((git|ssh|http(s)?)|(git@[\w.]+))(:(\/\/)?)([\w.@:/\-~]+)(\.git)(\/)?/;
   const validGit = gitUrl.test(src);
-  if (validGit) return save(name, { src, type: 'git' });
+  if (validGit) {
+    shell.exec(`git clone ${src} ${root}`, exitCode => {
+      if (exitCode !== 0) {
+        console.error(`${chalk.redBright('\nGit clone failed :(')} Make sure that the Git URL is correct.`);
+      } else {
+        logSuccess(name);
+        clean(root, name);
+      }
+    });
+    return;
+  }
 
-  // if the source was invalid
+  // log if the source was invalid
   console.error(chalk.redBright('\nInvalid [source]'));
-  console.log(`Use ${chalk.green('spark save -h')} to display help information\n`);
+  console.log(`Run ${chalk.green('spark save -h')} to display help information.\n`);
 }
+
+function logSuccess(name) {
+  console.log(chalk.green('\nSuccess! ＼(＾O＾)／'));
+  console.log(`You can now run ${chalk.green(`spark ${name} <project-directory>`)} to use your new boilerplate!\n`);
+}
+
+function clean(root, name) {
+  const blacklist = ['.git', 'node_modules'];
+  for (const item of blacklist) {
+    const pathToItem = path.resolve(root, item);
+    const itemExists = fs.pathExistsSync(pathToItem);
+    if (itemExists) {
+      fs.removeSync(pathToItem);
+      console.log(`${chalk.redBright(item)} has been removed from ${chalk.green(name)}`);
+    }
+  }
+}
+
+module.exports = save;
