@@ -24,7 +24,14 @@ function save(name, src = path.resolve()) {
   const sourcePath = path.resolve(src);
   const pathExists = fs.pathExistsSync(sourcePath);
   if (pathExists) {
-    fs.copySync(src, root, { overwrite: false, errorOnExist: true });
+    const filter = path => {
+      const match = path.match(/node_modules$|.git$/);
+      if (match) {
+        console.log(`${chalk.redBright(match[0])} has been excluded from ${chalk.blueBright(name)}`);
+      }
+      return !match;
+    };
+    fs.copySync(src, root, { overwrite: false, errorOnExist: true, filter });
     logSuccess(name);
     clean(root, name);
     return;
@@ -55,6 +62,7 @@ function logSuccess(name) {
   console.log(`You can now run ${chalk.yellow('spark', chalk.underline(name), '<project-directory>')} to use your new boilerplate!\n`);
 }
 
+// clean out blacklisted content
 function clean(root, name) {
   const blacklist = ['.git', 'node_modules'];
   for (const item of blacklist) {
