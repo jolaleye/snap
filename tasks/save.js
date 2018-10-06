@@ -8,7 +8,7 @@ const shell = require('shelljs');
 
 // spark save <name> [source]
 // save a directory or repository provided by [source] to .spark/<name>
-function save(name, src = path.resolve()) {
+function save(name, src = path.resolve(), options) {
   // ensure that the vault exists
   const vaultExists = fs.pathExistsSync(path.resolve(os.homedir(), '.spark'));
   if (!vaultExists) shell.exec(`node ${path.resolve(__dirname, 'init.js')}`);
@@ -17,7 +17,7 @@ function save(name, src = path.resolve()) {
 
   // check if the name is already taken
   const alreadyExists = fs.pathExistsSync(root);
-  if (alreadyExists) {
+  if (alreadyExists && !options.overwrite) {
     console.error(`\n${chalk.redBright(chalk.bold.underline(name), 'already exists')}\n`);
     return;
   }
@@ -26,14 +26,22 @@ function save(name, src = path.resolve()) {
   const sourcePath = path.resolve(src);
   const pathExists = fs.pathExistsSync(sourcePath);
   if (pathExists) {
-    const filter = pathToCopy => {
-      const match = pathToCopy.match(/node_modules$|.git$/);
-      if (match) {
-        console.log(`${chalk.redBright(match[0])} has been excluded from ${chalk.blueBright(name)}`);
+    // if --overwrite is passed, remove the existing save first
+    if (options.overwrite) fs.removeSync(root);
+
+    // copy the source provided to the new boilerplate in the vault
+    fs.copySync(src, root, {
+      overwrite: false, // don't want to modify existing boilerplates, -o will remove the old one first
+      errorOnExist: true, // shouldn't happen, either the boilerplate is new or has been removed with -o
+      filter: pathToCopy => {
+        const match = pathToCopy.match(/node_modules$|.git$/);
+        if (match) {
+          console.log(`${chalk.redBright(match[0])} has been excluded from ${chalk.blueBright(name)}`);
+        }
+        return !match;
       }
-      return !match;
-    };
-    fs.copySync(src, root, { overwrite: false, errorOnExist: true, filter });
+    });
+
     logSuccess(name);
     clean(root, name);
     return;
