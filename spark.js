@@ -12,11 +12,11 @@ cli
   .version(pkg.version, '-v, --version')
   .usage(`${chalk.yellow('<command>')} ${chalk.gray('or')} spark ${chalk.yellow('<boilerplate-name> <project-directory>')}`)
   .on('--help', () => {
-    console.log('\nFor example, if you wanted to save and use a boilerplate for React projects...');
+    console.log('\nFor example, to save a React starter project from GitHub for future use...');
     console.log(`  spark save react https://github.com/user/react-starter.git`);
     console.log(`  spark react my-project`);
     console.log('  cd my-project\n');
-    console.log('If you have any problems, please file an issue:');
+    console.log('If you encounter any problems, please open an issue:');
     console.log(`  ${chalk.cyan('https://github.com/jolaleye/spark/issues')}\n`);
   });
 
@@ -60,7 +60,7 @@ cli
   .usage(`${chalk.yellow('<names...>')}`)
   .description('delete a saved boilerplate')
   .on('--help', () => {
-    console.log(`\n${chalk.yellow('<names...>')} can be one or multiple names of saved boilerplates.\n`);
+    console.log(`\n${chalk.yellow('<names...>')} can be one or more names of saved boilerplates.\n`);
   })
   .action((names) => {});
 
