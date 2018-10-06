@@ -28,11 +28,12 @@ cli
 // save - save a directory or repository to a name
 cli
   .command('save <name> [source]')
-  .usage(chalk.yellow('<name> [source]'))
+  .usage(chalk.yellow('<name> [source] [options]'))
   .description('save a directory or respository')
+  .option('-o, --overwrite', 'overwrite an existing boilerplate with the same name')
   .on('--help', () => {
     console.log(`\n${chalk.yellow('[source]')} can be...`);
-    console.log(`  - a path to a directory: ${chalk.cyan('./starter')}`);
+    console.log(`  - a local path to a directory: ${chalk.cyan('./starter')}`);
     console.log(`  - a Git repository URL: ${chalk.cyan('https://github.com/user/starter.git')}`);
     console.log('If no source is provided, it will default to the current directory.\n');
   })
