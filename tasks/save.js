@@ -13,6 +13,13 @@ function save(name, src = path.resolve()) {
 
   const root = path.resolve(os.homedir(), '.spark', name);
 
+  // check if the name is already taken
+  const alreadyExists = fs.pathExistsSync(root);
+  if (alreadyExists) {
+    console.error(`\n${chalk.redBright(chalk.bold.underline(name), 'already exists')}\n`);
+    return;
+  }
+
   // check if the source provided resolves to a valid path
   const sourcePath = path.resolve(src);
   const pathExists = fs.pathExistsSync(sourcePath);
