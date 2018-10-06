@@ -6,6 +6,7 @@ const chalk = require('chalk');
 
 const pkg = require('./package.json');
 const save = require('./tasks/save');
+const ls = require('./tasks/ls');
 
 // cli info
 cli
@@ -43,8 +44,8 @@ cli
 cli
   .command('ls')
   .usage(' ')
-  .description('list the available boilerplates')
-  .action(() => {});
+  .description('list saved boilerplates')
+  .action(ls);
 
 // show - display the file structure of a boilerplate
 cli
