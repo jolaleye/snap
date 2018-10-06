@@ -27,9 +27,9 @@ function save(name, src = path.resolve()) {
   const gitUrl = /((git|ssh|http(s)?)|(git@[\w.]+))(:(\/\/)?)([\w.@:/\-~]+)(\.git)(\/)?/;
   const validGit = gitUrl.test(src);
   if (validGit) {
-    shell.exec(`git clone ${src} ${root}`, exitCode => {
+    shell.exec(`git clone ${src} ${root}`, { silent: true }, exitCode => {
       if (exitCode !== 0) {
-        console.error(`${chalk.redBright('\nGit clone failed :(')} Make sure that the Git URL is correct.`);
+        console.error(`\n${chalk.redBright('Save failed :(')}  Could not clone from ${chalk.cyan(src)}\n`);
       } else {
         logSuccess(name);
         clean(root, name);
@@ -40,12 +40,12 @@ function save(name, src = path.resolve()) {
 
   // log if the source was invalid
   console.error(chalk.redBright('\nInvalid [source]'));
-  console.log(`Run ${chalk.green('spark save -h')} to display help information.\n`);
+  console.log(`Run ${chalk.yellow('spark save -h')} to display help information.\n`);
 }
 
 function logSuccess(name) {
   console.log(chalk.green('\nSuccess! ＼(＾O＾)／'));
-  console.log(`You can now run ${chalk.green(`spark ${name} <project-directory>`)} to use your new boilerplate!\n`);
+  console.log(`You can now run ${chalk.yellow('spark', chalk.underline(name), '<project-directory>')} to use your new boilerplate!\n`);
 }
 
 function clean(root, name) {
@@ -55,7 +55,7 @@ function clean(root, name) {
     const itemExists = fs.pathExistsSync(pathToItem);
     if (itemExists) {
       fs.removeSync(pathToItem);
-      console.log(`${chalk.redBright(item)} has been removed from ${chalk.green(name)}`);
+      console.log(`${chalk.redBright(item)} has been removed from ${chalk.blueBright(name)}`);
     }
   }
 }
