@@ -24,8 +24,8 @@ function save(name, src = path.resolve()) {
   const sourcePath = path.resolve(src);
   const pathExists = fs.pathExistsSync(sourcePath);
   if (pathExists) {
-    const filter = path => {
-      const match = path.match(/node_modules$|.git$/);
+    const filter = pathToCopy => {
+      const match = pathToCopy.match(/node_modules$|.git$/);
       if (match) {
         console.log(`${chalk.redBright(match[0])} has been excluded from ${chalk.blueBright(name)}`);
       }
