@@ -36,7 +36,7 @@ function save(name, src = path.resolve(), options) {
       filter: pathToCopy => {
         const match = pathToCopy.match(/node_modules$|.git$/);
         if (match) {
-          console.log(`${chalk.redBright(match[0])} has been excluded from ${chalk.blueBright(name)}`);
+          console.log(`${chalk.dim.redBright(match[0])} has been excluded from ${chalk.blueBright(name)}`);
         }
         return !match;
       }
@@ -80,7 +80,7 @@ function clean(root, name) {
     const itemExists = fs.pathExistsSync(pathToItem);
     if (itemExists) {
       fs.removeSync(pathToItem);
-      console.log(`${chalk.redBright(item)} has been removed from ${chalk.blueBright(name)}`);
+      console.log(`${chalk.dim.redBright(item)} has been removed from ${chalk.blueBright(name)}`);
     }
   }
 }
