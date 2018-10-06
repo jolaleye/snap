@@ -7,6 +7,7 @@ const chalk = require('chalk');
 const pkg = require('./package.json');
 const save = require('./tasks/save');
 const ls = require('./tasks/ls');
+const rm = require('./tasks/rm');
 
 // cli info
 cli
@@ -60,9 +61,10 @@ cli
   .usage(`${chalk.yellow('<names...>')}`)
   .description('delete a saved boilerplate')
   .on('--help', () => {
-    console.log(`\n${chalk.yellow('<names...>')} can be one or more names of saved boilerplates.\n`);
+    console.log(`\n${chalk.yellow('<names...>')} can be one or more names of saved boilerplates.`);
+    console.log(`You can check out what you\'ve saved with ${chalk.yellow('spark ls')}.\n`);
   })
-  .action((names) => {});
+  .action(rm);
 
 // parse arguments
 cli.parse(process.argv);
