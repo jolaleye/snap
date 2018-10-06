@@ -54,10 +54,9 @@ cli
   .description('display the file structure of a boilerplate')
   .action((name) => {});
 
-// delete - delete a saved boilerplate
+// rm - delete a saved boilerplate
 cli
-  .command('delete <names...>')
-  .alias('rm')
+  .command('rm <names...>')
   .usage(`${chalk.yellow('<names...>')}`)
   .description('delete a saved boilerplate')
   .on('--help', () => {
