@@ -10,22 +10,20 @@ const shell = require('shelljs');
 // save a directory or repository provided by [source] to .spark/<name>
 function save(name, src = path.resolve(), options) {
   // ensure that the vault exists
-  const vaultExists = fs.pathExistsSync(path.resolve(os.homedir(), '.spark'));
-  if (!vaultExists) shell.exec(`node ${path.resolve(__dirname, 'init.js')}`);
+  const vault = path.join(os.homedir(), '.spark');
+  if (!fs.pathExistsSync(vault)) shell.exec(`node ${path.join(__dirname, 'init.js')}`);
 
-  const root = path.resolve(os.homedir(), '.spark', name);
+  const root = path.join(os.homedir(), '.spark', name);
 
   // check if the name is already taken
-  const alreadyExists = fs.pathExistsSync(root);
-  if (alreadyExists && !options.overwrite) {
-    console.error(`\n${chalk.redBright(chalk.bold.underline(name), 'already exists')}\n`);
+  if (fs.pathExistsSync(root) && !options.overwrite) {
+    console.error(`\n${chalk.red(chalk.underline(name), 'already exists')}\n`);
     return;
   }
 
   // check if the source provided resolves to a valid path
   const sourcePath = path.resolve(src);
-  const pathExists = fs.pathExistsSync(sourcePath);
-  if (pathExists) {
+  if (fs.pathExistsSync(sourcePath)) {
     // if --overwrite is passed, remove the existing save first
     if (options.overwrite) fs.removeSync(root);
 
@@ -36,7 +34,7 @@ function save(name, src = path.resolve(), options) {
       filter: pathToCopy => {
         const match = pathToCopy.match(/node_modules$|.git$/);
         if (match) {
-          console.log(`${chalk.dim.redBright(match[0])} has been excluded from ${chalk.blueBright(name)}`);
+          console.log(`${chalk.dim.redBright(match[0])} has been excluded from ${chalk.yellow(name)}`);
         }
         return !match;
       }
@@ -49,11 +47,10 @@ function save(name, src = path.resolve(), options) {
 
   // check if the source provided is a valid git url
   const gitUrl = /((git|ssh|http(s)?)|(git@[\w.]+))(:(\/\/)?)([\w.@:/\-~]+)(\.git)(\/)?/;
-  const validGit = gitUrl.test(src);
-  if (validGit) {
+  if (gitUrl.test(src)) {
     shell.exec(`git clone ${src} ${root}`, { silent: true }, exitCode => {
       if (exitCode !== 0) {
-        console.error(`\n${chalk.redBright('Save failed :(')}  Could not clone from ${chalk.cyan(src)}\n`);
+        console.error(`\n${chalk.red('Save failed :(')}  Could not clone from ${chalk.cyan(src)}\n`);
       } else {
         logSuccess(name);
         clean(root, name);
@@ -63,7 +60,7 @@ function save(name, src = path.resolve(), options) {
   }
 
   // log if the source was invalid
-  console.error(chalk.redBright('\nInvalid [source]'));
+  console.error(chalk.red('\nInvalid [source]'));
   console.log(`Run ${chalk.yellow('spark save -h')} to display help information.\n`);
 }
 
@@ -76,11 +73,10 @@ function logSuccess(name) {
 function clean(root, name) {
   const blacklist = ['.git', 'node_modules'];
   for (const item of blacklist) {
-    const pathToItem = path.resolve(root, item);
-    const itemExists = fs.pathExistsSync(pathToItem);
-    if (itemExists) {
+    const pathToItem = path.join(root, item);
+    if (fs.pathExistsSync(pathToItem)) {
       fs.removeSync(pathToItem);
-      console.log(`${chalk.dim.redBright(item)} has been removed from ${chalk.blueBright(name)}`);
+      console.log(`${chalk.dim.redBright(item)} has been removed from ${chalk.yellow(name)}`);
     }
   }
 }

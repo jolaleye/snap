@@ -8,10 +8,9 @@ const chalk = require('chalk');
 // spark show <name>
 // display the file structure of a boilerplate
 function show(name) {
-  const root = path.resolve(os.homedir(), '.spark', name);
-  const exists = fs.pathExistsSync(root);
-  if (!exists) {
-    console.log(`\n${chalk.redBright('Error:')} ${name} does not exist.\n`);
+  const root = path.join(os.homedir(), '.spark', name);
+  if (!fs.pathExistsSync(root)) {
+    console.log(`\n${chalk.red('Error:')} ${chalk.yellow(name)} does not exist.\n`);
     return;
   }
 

@@ -8,7 +8,7 @@ const chalk = require('chalk');
 // spark ls
 // list saved boilerplates
 function ls() {
-  const vault = path.resolve(os.homedir(), '.spark');
+  const vault = path.join(os.homedir(), '.spark');
   const list = shell.ls(vault);
   if (!list.length) {
     console.log('\nIt seems you don\'t have anything saved...');
@@ -19,8 +19,8 @@ function ls() {
 
   console.log('\nThe following boilerplates have been saved...');
   console.log(`Run ${chalk.yellow('spark <boilerplate-name> <project-directory>')} to get started with your new project!`);
-  for (const boilerplate of list) {
-    console.log(`  ○ ${boilerplate}`);
+  for (const bplate of list) {
+    console.log(`  ○ ${bplate}`);
   }
   console.log();
 }
