@@ -5,10 +5,11 @@ const cli = require('commander');
 const chalk = require('chalk');
 
 const pkg = require('./package.json');
+const spark = require('./tasks/spark');
 const save = require('./tasks/save');
 const ls = require('./tasks/ls');
-const rm = require('./tasks/rm');
 const show = require('./tasks/show');
+const rm = require('./tasks/rm');
 
 // cli info
 cli
@@ -26,7 +27,7 @@ cli
 // spark up a new project
 cli
   .arguments('<boilerplate-name> <project-directory>')
-  .action((boilerplate, name) => {});
+  .action(spark);
 
 // save - save a directory or repository to a name
 cli
