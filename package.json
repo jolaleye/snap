@@ -2,10 +2,13 @@
   "name": "spark",
   "version": "0.8.0",
   "main": "spark.js",
-  "description": "A flexible and simple boilerplate management tool",
+  "description": "Simple and flexible boilerplate management",
   "author": "Jonathan Olaleye",
   "license": "MIT",
   "bin": "./spark.js",
+  "engines": {
+    "node": ">=6.0.0"
+  },
   "scripts": {
     "postinstall": "node tasks/init.js"
   },
