@@ -8,6 +8,7 @@ const pkg = require('./package.json');
 const save = require('./tasks/save');
 const ls = require('./tasks/ls');
 const rm = require('./tasks/rm');
+const show = require('./tasks/show');
 
 // cli info
 cli
@@ -53,7 +54,7 @@ cli
   .command('show <name>')
   .usage(`${chalk.yellow('<name>')}`)
   .description('display the file structure of a boilerplate')
-  .action((name) => {});
+  .action(show);
 
 // rm - delete a saved boilerplate
 cli
