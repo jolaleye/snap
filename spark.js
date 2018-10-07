@@ -14,7 +14,7 @@ const rm = require('./tasks/rm');
 // cli info
 cli
   .version(pkg.version, '-v, --version')
-  .usage(`${chalk.yellow('<command>')} ${chalk.gray('or')} spark ${chalk.yellow('<boilerplate-name> <project-directory>')}`)
+  .usage(`${chalk.yellow('<command>')} ${chalk.gray('or')} spark ${chalk.yellow('<boilerplate-name> <project-directory> [options]')}`)
   .on('--help', () => {
     console.log('\nFor example, to save a React starter project from GitHub for future use...');
     console.log(`  spark save react https://github.com/user/react-starter.git`);
@@ -27,6 +27,7 @@ cli
 // spark up a new project
 cli
   .arguments('<boilerplate-name> <project-directory>')
+  .option('-i, --install', 'run \'npm install\' after creating a project')
   .action(spark);
 
 // save - save a directory or repository to a name

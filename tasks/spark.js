@@ -4,8 +4,11 @@ const path = require('path');
 const fs = require('fs-extra');
 const os = require('os');
 const chalk = require('chalk');
+const shell = require('shelljs');
 
-function spark(bplateName, projectDir) {
+// spark <boilerplate-name> <project-directory> [-i]
+// create a new project with a boilerplate
+function spark(bplateName, projectDir, options) {
   // find the boilerplate
   const bplate = path.join(os.homedir(), '.spark', bplateName);
   if (!fs.pathExistsSync(bplate)) {
@@ -21,7 +24,14 @@ function spark(bplateName, projectDir) {
   }
 
   // spark up the new project ;)
+  console.log('\nCopying...');
   fs.copySync(bplate, projectPath);
+
+  if (options.install) {
+    console.log(`Running '${chalk.yellow('npm install')}'...`);
+    shell.exec(`cd ${projectDir} && npm install`);
+  }
+
   console.log(chalk.green('\nSuccess! ＼(＾O＾)／'));
   console.log(`You can now ${chalk.yellow(`cd ${projectDir}`)}\n`);
 }
