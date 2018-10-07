@@ -21,12 +21,12 @@ function show(name) {
   console.log();
 }
 
-function printTree(item, isLast) {
+function printTree(item, parentWasLast, isLast) {
   if (item.level === 0) console.log(chalk.yellow(item.name));
   else {
     // build the item's indent/prefix
     let prefix = '';
-    prefix += '│    '.repeat(item.level - 1);
+    prefix += parentWasLast ? '    '.repeat(item.level - 1) : '│   '.repeat(item.level - 1);
     prefix += isLast ? '└── ' : '├── ';
 
     console.log(`${prefix}${item.name}`);
@@ -35,8 +35,8 @@ function printTree(item, isLast) {
   // recursively print children
   if (item.children) {
     for (const child of item.children) {
-      const isLastChild = child === item.children[item.children.length - 1];
-      printTree(child, isLastChild);
+      const lastChild = child === item.children[item.children.length - 1];
+      printTree(child, isLast, lastChild);
     }
   }
 }
