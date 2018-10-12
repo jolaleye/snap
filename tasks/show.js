@@ -5,10 +5,10 @@ const os = require('os');
 const fs = require('fs-extra');
 const chalk = require('chalk');
 
-// spark show <name>
+// snap show <name>
 // display the file structure of a boilerplate
 function show(name) {
-  const root = path.join(os.homedir(), '.spark', name);
+  const root = path.join(os.homedir(), '.snap', name);
   if (!fs.pathExistsSync(root)) {
     console.log(`\n${chalk.red('Error:')} ${chalk.yellow(name)} does not exist.\n`);
     return;

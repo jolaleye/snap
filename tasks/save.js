@@ -6,14 +6,14 @@ const fs = require('fs-extra');
 const chalk = require('chalk');
 const shell = require('shelljs');
 
-// spark save <name> [source]
-// save a directory or repository provided by [source] to .spark/<name>
+// snap save <name> [source]
+// save a directory or repository provided by [source] to .snap/<name>
 function save(name, src = path.resolve(), options) {
   // ensure that the vault exists
-  const vault = path.join(os.homedir(), '.spark');
+  const vault = path.join(os.homedir(), '.snap');
   if (!fs.pathExistsSync(vault)) shell.exec(`node ${path.join(__dirname, 'init.js')}`);
 
-  const root = path.join(os.homedir(), '.spark', name);
+  const root = path.join(vault, name);
 
   // check if the name is already taken
   if (fs.pathExistsSync(root) && !options.overwrite) {
@@ -61,12 +61,12 @@ function save(name, src = path.resolve(), options) {
 
   // log if the source was invalid
   console.error(chalk.red('\nInvalid [source]'));
-  console.log(`Run ${chalk.yellow('spark save -h')} to display help information.\n`);
+  console.log(`Run ${chalk.yellow('snap save -h')} to display help information.\n`);
 }
 
 function logSuccess(name) {
   console.log(chalk.green('\nSuccess! ＼(＾O＾)／'));
-  console.log(`You can now run ${chalk.yellow('spark', chalk.underline(name), '<project-directory>')} to use your new boilerplate!\n`);
+  console.log(`You can now run ${chalk.yellow('snap', chalk.underline(name), '<project-directory>')} to use your new boilerplate!\n`);
 }
 
 // clean out blacklisted content

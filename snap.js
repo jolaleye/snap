@@ -5,7 +5,7 @@ const cli = require('commander');
 const chalk = require('chalk');
 
 const pkg = require('./package.json');
-const spark = require('./tasks/spark');
+const snap = require('./tasks/snap');
 const save = require('./tasks/save');
 const ls = require('./tasks/ls');
 const show = require('./tasks/show');
@@ -14,21 +14,21 @@ const rm = require('./tasks/rm');
 // cli info
 cli
   .version(pkg.version, '-v, --version')
-  .usage(`${chalk.yellow('<command>')} ${chalk.gray('or')} spark ${chalk.yellow('<boilerplate-name> <project-directory> [options]')}`)
+  .usage(`${chalk.yellow('<command>')} ${chalk.gray('or')} snap ${chalk.yellow('<boilerplate-name> <project-directory> [options]')}`)
   .on('--help', () => {
     console.log('\nFor example, to save a React starter project from GitHub for future use...');
-    console.log(`  spark save react https://github.com/user/react-starter.git`);
-    console.log(`  spark react my-project`);
+    console.log(`  snap save react https://github.com/user/react-starter.git`);
+    console.log(`  snap react my-project`);
     console.log('  cd my-project\n');
     console.log('If you encounter any problems, please open an issue:');
-    console.log(`  ${chalk.cyan('https://github.com/jolaleye/spark/issues')}\n`);
+    console.log(`  ${chalk.cyan('https://github.com/jolaleye/snap/issues')}\n`);
   });
 
-// spark up a new project
+// start up a new project
 cli
   .arguments('<boilerplate-name> <project-directory>')
   .option('-i, --install', 'run \'npm install\' after creating a project')
-  .action(spark);
+  .action(snap);
 
 // save - save a directory or repository to a name
 cli
@@ -65,7 +65,7 @@ cli
   .description('delete a saved boilerplate')
   .on('--help', () => {
     console.log(`\n${chalk.yellow('<names...>')} can be one or more names of saved boilerplates.`);
-    console.log(`You can check out what you\'ve saved with ${chalk.yellow('spark ls')}.\n`);
+    console.log(`You can check out what you\'ve saved with ${chalk.yellow('snap ls')}.\n`);
   })
   .action(rm);
 

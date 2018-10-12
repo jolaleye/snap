@@ -6,11 +6,11 @@ const os = require('os');
 const chalk = require('chalk');
 const shell = require('shelljs');
 
-// spark <boilerplate-name> <project-directory> [-i]
+// snap <boilerplate-name> <project-directory> [-i]
 // create a new project with a boilerplate
-function spark(bplateName, projectDir, options) {
+function snap(bplateName, projectDir, options) {
   // find the boilerplate
-  const bplate = path.join(os.homedir(), '.spark', bplateName);
+  const bplate = path.join(os.homedir(), '.snap', bplateName);
   if (!fs.pathExistsSync(bplate)) {
     console.log(`\n${chalk.red('Error:')} ${chalk.yellow(bplateName)} does not exist.\n`);
     return;
@@ -23,7 +23,7 @@ function spark(bplateName, projectDir, options) {
     return;
   }
 
-  // spark up the new project ;)
+  // copy the boilerplate
   console.log('\nCopying...');
   fs.copySync(bplate, projectPath);
 
@@ -36,4 +36,4 @@ function spark(bplateName, projectDir, options) {
   console.log(`You can now ${chalk.yellow(`cd ${projectDir}`)}\n`);
 }
 
-module.exports = spark;
+module.exports = snap;
