@@ -30,12 +30,12 @@ You'll also see this information when you open an issue, so don't worry if you f
 
 ### Requesting a Feature :bulb:
 
-The goal of Snap is to provide a simple and flexible tool to save and organize boilerplates so that later you can start projects in a snap (:wink:). It's meant to be easy to learn and easy to use. Before you request a new feature, consider whether the idea fits the scope of this project. 
+The goal of Snap is to provide a simple and flexible tool to save and organize boilerplates so that later you can start projects in a snap :wink:. It's meant to be easy to learn and easy to use. Before you request a new feature, consider whether the idea fits the scope of this project. 
 
 If you find yourself wishing for a feature that doesn't exist yet, you're probably not alone. Search through the [issues](https://github.com/jolaleye/snap/issues) to see if someone else wants the same thing and contribute to the conversation. If the idea hasn't been brought up yet, [open an issue](https://github.com/jolaleye/snap/issues/new?template=feature_request.md) that explains the feature you'd like to see, why you need it, and how it should work.
 
 ### Submitting a Contribution :sparkles:
 
-If you've fixed a bug, added a feature, improved doocumentation, or done something else, you can [create a pull request](https://github.com/jolaleye/snap/pulls) to start a conversation about your changes. Make sure you've looked through this and other open source projects to get a feel for best practices and conventions. Try to adopt Snap's code style and commit messages so that your changes integrate smoothly.
+If you've fixed a bug, added a feature, improved documentation, or done something else, you can [create a pull request](https://github.com/jolaleye/snap/pulls) to start a conversation about your changes. Make sure you've looked through this and other open source projects to get a feel for best practices and conventions. Try to adopt Snap's code style and commit messages so that your changes integrate smoothly.
 
 Thank you for reading through this contributing guide and welcome to the community! :v: :tada:
