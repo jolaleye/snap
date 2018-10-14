@@ -1,2 +1,90 @@
-# snap
-⚡ A flexible and simple boilerplate management tool
+<p align="center">
+  <img alt="snap" src="https://i.imgur.com/fbf8WGE.png" width="650">
+</p>
+
+<p align="center">
+  Simple and flexible boilerplate management
+</p>
+
+<p align="center">
+  <a href="https://www.npmjs.com/package/snap"><img alt="npm version" src="https://img.shields.io/npm/v/snap.svg?maxAge=43200&colorB=4c32f2"></a>
+  <a href="https://www.npmjs.com/package/snap"><img alt="downloads" src="https://img.shields.io/npm/dm/snap.svg?maxAge=21600&colorB=07c171"></a>
+  <a href="https://github.com/jolaleye/snap/blob/master/LICENSE"><img alt="license" src="https://img.shields.io/badge/license-MIT-1f425f.svg"></a>
+  <a href="https://github.com/jolaleye/snap/blob/master/CONTRIBUTING.md"><img alt="prs welcome" src="https://img.shields.io/badge/PRs-welcome-ea5267.svg"></a>
+</p>
+
+Snap allows you to save, organize, and reuse boilerplates quickly and easily. When you find yourself using the same starting files for multiple projects just `snap save starter`, and when you need to use that starter project again: `snap starter my-project`. It's that easy.
+
+## Installation
+
+```
+npm install -g snap
+```
+
+## Usage
+
+### save
+
+Saving a boilerplate with Snap is quick and easy:
+
+```
+snap save <name> [source]
+```
+
+`<name>` should be something memorable and easy to type out so that you can use it later. `[source]` can be a local path to a directory (e.g. `./starter`) or a Git repository URL (e.g. `https://github.com/user/starter.git`). Providing a source is optional and if you don't, the current working directory will be saved.
+
+### snap
+
+When you want to use a boilerplate you have saved, just run:
+
+```
+snap <boilerplate-name> <project-directory>
+```
+
+`<boilerplate-name>` should be the name of a boilerplate you have saved. `<project-directory>` should be a local path to the project you want to create. For example, if you want to create a project called *my-project* with a boilerplate called *starter*, you should run `snap starter ./my-project`.
+
+### ls
+
+If you want to see what you have saved:
+
+```
+snap ls
+```
+
+You'll either get a nice list of names, or a message letting you know you don't have anything saved.
+
+### show
+
+To get a nice and pretty view of the file structure of a boilerplate:
+
+```
+snap show <name>
+```
+
+`<name>` should be the name of a boilerplate you have saved.
+
+### rm
+
+When you no longer need a boilerplate and want to delete it:
+
+```
+snap rm <names...>
+```
+
+You can provide one or more names of boilerplates you have saved.
+
+## Contributing
+
+Open source projects such as Snap are powered by the community. Read below to find out how you can contribute.
+
+### [Code of Conduct](CODE_OF_CONDUCT.md)
+
+Always try your best to make a positive impact on this project and its community. By participating, you are expected to uphold the Code of Conduct.
+
+### [Contributing Guide](CONTRIBUTING.md)
+
+Read the contributing guide to learn how you can report bugs, suggest features, and contribute changes.
+
+## License
+
+Snap is [MIT licensed](LICENSE).
