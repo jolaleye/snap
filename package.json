@@ -1,6 +1,6 @@
 {
   "name": "snap",
-  "version": "0.11.0",
+  "version": "1.0.0",
   "main": "snap.js",
   "description": "Simple and flexible boilerplate management",
   "author": "Jonathan Olaleye",
