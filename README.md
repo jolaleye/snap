@@ -38,10 +38,12 @@ snap save <name> [source]
 When you want to use a boilerplate you have saved, run:
 
 ```
-snap <boilerplate-name> <project-directory>
+snap <boilerplate-name> <project-directory> [options]
 ```
 
 `<boilerplate-name>` should be the name of a boilerplate you have saved. `<project-directory>` should be a local path to the project you want to create. For example, if you want to create a project called *my-project* with a boilerplate called *starter*, you should run `snap starter ./my-project`.
+
+Use `-i` or `--install` to automatically run `npm install` after creating the project.
 
 ### ls
 
