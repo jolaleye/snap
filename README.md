@@ -13,7 +13,7 @@
   <a href="https://github.com/jolaleye/snap/blob/master/CONTRIBUTING.md"><img alt="prs welcome" src="https://img.shields.io/badge/PRs-welcome-ea5267.svg"></a>
 </p>
 
-Snap allows you to save, organize, and reuse boilerplates quickly and easily. When you find yourself using the same starting files for multiple projects just `snap save starter`, and when you need to use that starter project again: `snap starter my-project`. It's that easy.
+Snap allows you to save, organize, and reuse boilerplates quickly and easily. When you find yourself using the same starting files for multiple projects just run `snap save starter`, and when you need to use that starter project again: `snap starter my-project`. It's that easy. :cake:
 
 ## Installation
 
@@ -31,11 +31,11 @@ Saving a boilerplate with Snap is quick and easy:
 snap save <name> [source]
 ```
 
-`<name>` should be something memorable and easy to type out so that you can use it later. `[source]` can be a local path to a directory (e.g. `./starter`) or a Git repository URL (e.g. `https://github.com/user/starter.git`). Providing a source is optional and if you don't, the current working directory will be saved.
+`<name>` should be something memorable and short so that you can use it later. `[source]` can be a local path to a directory (e.g. `./starter`) or a Git repository URL (e.g. `https://github.com/user/starter.git`). Providing a source is optional. If you don't, the current working directory will be saved.
 
 ### snap
 
-When you want to use a boilerplate you have saved, just run:
+When you want to use a boilerplate you have saved, run:
 
 ```
 snap <boilerplate-name> <project-directory>
@@ -55,7 +55,7 @@ You'll either get a nice list of names, or a message letting you know you don't 
 
 ### show
 
-To get a nice and pretty view of the file structure of a boilerplate:
+To view the file structure of a boilerplate:
 
 ```
 snap show <name>
