@@ -7,9 +7,9 @@
 </p>
 
 <p align="center">
-  <a href="https://www.npmjs.com/package/snap"><img alt="npm version" src="https://img.shields.io/npm/v/snap.svg?maxAge=7200&colorB=FF2758"></a>
-  <a href="https://www.npmjs.com/package/snap"><img alt="total downloads" src="https://img.shields.io/npm/dt/snap.svg?maxAge=7200&colorB=06E89A"></a>
-  <a href="https://github.com/jolaleye/snap/blob/master/CONTRIBUTING.md"><img alt="prs welcome" src="https://img.shields.io/badge/PRs-welcome-32A4FD.svg"></a>
+  <a href="https://www.npmjs.com/package/snap"><img alt="npm version" src="https://img.shields.io/npm/v/snap.svg?style=for-the-badge&maxAge=7200&colorB=FF2758"></a>
+  <a href="https://www.npmjs.com/package/snap"><img alt="total downloads" src="https://img.shields.io/npm/dt/snap.svg?style=for-the-badge&maxAge=7200&colorB=06E19A"></a>
+  <a href="https://github.com/jolaleye/snap/blob/master/CONTRIBUTING.md"><img alt="prs welcome" src="https://img.shields.io/badge/PRs-welcome-32A4FD.svg?style=for-the-badge"></a>
 </p>
 
 Snap allows you to save, organize, and use boilerplates quickly and easily. When you find yourself using the same starting files for multiple projects just run `snap save starter`, and when you need to use that starter project again: `snap starter my-project`. It's that easy.
@@ -30,7 +30,7 @@ Saving a boilerplate with Snap is quick and easy:
 snap save <name> [source] [options]
 ```
 
-`<name>` should be something memorable and short so that you can use it later. `[source]` can be a local path to a directory (e.g. `./starter`) or a Git repository URL (e.g. `https://github.com/user/starter.git`). Providing a source is optional. If you don't, the current working directory will be saved.
+`<name>` should be something short and memorable so that you can use it later. `[source]` can be a local path to a directory (e.g. `./starter`) or a Git repository URL (e.g. `https://github.com/user/starter.git`). Providing a source is optional. If you don't, the current working directory will be saved.
 
 **Options:**
   - `-o`, `--overwrite`: Overwrite an existing boilerplate that has the same name
