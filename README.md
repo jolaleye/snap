@@ -7,10 +7,9 @@
 </p>
 
 <p align="center">
-  <a href="https://www.npmjs.com/package/snap"><img alt="npm version" src="https://img.shields.io/npm/v/snap.svg?maxAge=43200&colorB=4c32f2"></a>
-  <a href="https://www.npmjs.com/package/snap"><img alt="downloads" src="https://img.shields.io/npm/dm/snap.svg?maxAge=21600&colorB=07c171"></a>
-  <a href="https://github.com/jolaleye/snap/blob/master/LICENSE"><img alt="license" src="https://img.shields.io/badge/license-MIT-1f425f.svg"></a>
-  <a href="https://github.com/jolaleye/snap/blob/master/CONTRIBUTING.md"><img alt="prs welcome" src="https://img.shields.io/badge/PRs-welcome-ea5267.svg"></a>
+  <a href="https://www.npmjs.com/package/snap"><img alt="npm version" src="https://img.shields.io/npm/v/snap.svg?maxAge=7200&colorB=FF2758"></a>
+  <a href="https://www.npmjs.com/package/snap"><img alt="total downloads" src="https://img.shields.io/npm/dt/snap.svg?maxAge=7200&colorB=06E89A"></a>
+  <a href="https://github.com/jolaleye/snap/blob/master/CONTRIBUTING.md"><img alt="prs welcome" src="https://img.shields.io/badge/PRs-welcome-32A4FD.svg"></a>
 </p>
 
 Snap allows you to save, organize, and use boilerplates quickly and easily. When you find yourself using the same starting files for multiple projects just run `snap save starter`, and when you need to use that starter project again: `snap starter my-project`. It's that easy.
