@@ -1,5 +1,5 @@
 <p align="center">
-  <img alt="snap" src="https://i.imgur.com/fbf8WGE.png" width="650">
+  <img alt="snap" src="https://i.imgur.com/NRZ60OE.png" width="675">
 </p>
 
 <p align="center">
@@ -7,13 +7,12 @@
 </p>
 
 <p align="center">
-  <a href="https://www.npmjs.com/package/snap"><img alt="npm version" src="https://img.shields.io/npm/v/snap.svg?maxAge=43200&colorB=4c32f2"></a>
-  <a href="https://www.npmjs.com/package/snap"><img alt="downloads" src="https://img.shields.io/npm/dm/snap.svg?maxAge=21600&colorB=07c171"></a>
-  <a href="https://github.com/jolaleye/snap/blob/master/LICENSE"><img alt="license" src="https://img.shields.io/badge/license-MIT-1f425f.svg"></a>
-  <a href="https://github.com/jolaleye/snap/blob/master/CONTRIBUTING.md"><img alt="prs welcome" src="https://img.shields.io/badge/PRs-welcome-ea5267.svg"></a>
+  <a href="https://www.npmjs.com/package/snap"><img alt="npm version" src="https://img.shields.io/npm/v/snap.svg?style=for-the-badge&maxAge=7200&colorB=FF2758"></a>
+  <a href="https://www.npmjs.com/package/snap"><img alt="total downloads" src="https://img.shields.io/npm/dt/snap.svg?style=for-the-badge&maxAge=7200&colorB=06E19A"></a>
+  <a href="https://github.com/jolaleye/snap/blob/master/CONTRIBUTING.md"><img alt="prs welcome" src="https://img.shields.io/badge/PRs-welcome-32A4FD.svg?style=for-the-badge"></a>
 </p>
 
-Snap allows you to save, organize, and reuse boilerplates quickly and easily. When you find yourself using the same starting files for multiple projects just `snap save starter`, and when you need to use that starter project again: `snap starter my-project`. It's that easy.
+Snap allows you to save, organize, and use boilerplates quickly and easily. When you find yourself using the same starting files for multiple projects just run `snap save starter`, and when you need to use that starter project again: `snap starter my-project`. It's that easy.
 
 ## Installation
 
@@ -28,20 +27,26 @@ npm install -g snap
 Saving a boilerplate with Snap is quick and easy:
 
 ```
-snap save <name> [source]
+snap save <name> [source] [options]
 ```
 
-`<name>` should be something memorable and easy to type out so that you can use it later. `[source]` can be a local path to a directory (e.g. `./starter`) or a Git repository URL (e.g. `https://github.com/user/starter.git`). Providing a source is optional and if you don't, the current working directory will be saved.
+`<name>` should be something short and memorable so that you can use it later. `[source]` can be a local path to a directory (e.g. `./starter`) or a Git repository URL (e.g. `https://github.com/user/starter.git`). Providing a source is optional. If you don't, the current working directory will be saved.
+
+**Options:**
+  - `-o`, `--overwrite`: Overwrite an existing boilerplate that has the same name
 
 ### snap
 
-When you want to use a boilerplate you have saved, just run:
+When you want to use a boilerplate you have saved, run:
 
 ```
-snap <boilerplate-name> <project-directory>
+snap <boilerplate-name> <project-directory> [options]
 ```
 
 `<boilerplate-name>` should be the name of a boilerplate you have saved. `<project-directory>` should be a local path to the project you want to create. For example, if you want to create a project called *my-project* with a boilerplate called *starter*, you should run `snap starter ./my-project`.
+
+**Options:**
+  - `-i`, `--install`: Automatically run `npm install` after creating the project
 
 ### ls
 
@@ -51,11 +56,11 @@ If you want to see what you have saved:
 snap ls
 ```
 
-You'll either get a nice list of names, or a message letting you know you don't have anything saved.
+You'll either get a nice list of names or a message telling you that you don't have anything saved yet.
 
 ### show
 
-To get a nice and pretty view of the file structure of a boilerplate:
+To view the file structure of a boilerplate:
 
 ```
 snap show <name>
