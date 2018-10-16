@@ -13,7 +13,7 @@
   <a href="https://github.com/jolaleye/snap/blob/master/CONTRIBUTING.md"><img alt="prs welcome" src="https://img.shields.io/badge/PRs-welcome-ea5267.svg"></a>
 </p>
 
-Snap allows you to save, organize, and reuse boilerplates quickly and easily. When you find yourself using the same starting files for multiple projects just run `snap save starter`, and when you need to use that starter project again: `snap starter my-project`. It's that easy. :cake:
+Snap allows you to save, organize, and use boilerplates quickly and easily. When you find yourself using the same starting files for multiple projects just run `snap save starter`, and when you need to use that starter project again: `snap starter my-project`. It's that easy.
 
 ## Installation
 
@@ -57,7 +57,7 @@ If you want to see what you have saved:
 snap ls
 ```
 
-You'll either get a nice list of names, or a message letting you know you don't have anything saved.
+You'll either get a nice list of names or a message telling you that you don't have anything saved yet.
 
 ### show
 
