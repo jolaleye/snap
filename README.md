@@ -28,10 +28,13 @@ npm install -g snap
 Saving a boilerplate with Snap is quick and easy:
 
 ```
-snap save <name> [source]
+snap save <name> [source] [options]
 ```
 
 `<name>` should be something memorable and short so that you can use it later. `[source]` can be a local path to a directory (e.g. `./starter`) or a Git repository URL (e.g. `https://github.com/user/starter.git`). Providing a source is optional. If you don't, the current working directory will be saved.
+
+**Options:**
+  - `-o`, `--overwrite`: Overwrite an existing boilerplate that has the same name
 
 ### snap
 
@@ -43,7 +46,8 @@ snap <boilerplate-name> <project-directory> [options]
 
 `<boilerplate-name>` should be the name of a boilerplate you have saved. `<project-directory>` should be a local path to the project you want to create. For example, if you want to create a project called *my-project* with a boilerplate called *starter*, you should run `snap starter ./my-project`.
 
-Use `-i` or `--install` to automatically run `npm install` after creating the project.
+**Options:**
+  - `-i`, `--install`: Automatically run `npm install` after creating the project
 
 ### ls
 
