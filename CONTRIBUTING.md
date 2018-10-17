@@ -30,7 +30,7 @@ You'll also see this information when you open an issue, so don't worry if you f
 
 ### :bulb: Requesting a Feature
 
-Snap is a simple and flexible tool used to save and organize boilerplates so that later you can start projects in a snap. :wink: It's meant to be easy to learn and easy to use. Before you request a new feature, consider whether the idea fits the scope of this project. 
+Snap is a simple and flexible tool used to save and organize boilerplates so that later you can start projects in a snap. :wink: It's meant to be easy to learn and easy to use. Before you request a new feature, consider whether the idea fits the scope of this project.
 
 If you find yourself wishing for a feature that doesn't exist yet, you're probably not alone. Search through the [issues](https://github.com/jolaleye/snap/issues) to see if someone else wants the same thing and contribute to the conversation. If the idea hasn't been brought up yet, [open an issue](https://github.com/jolaleye/snap/issues/new?template=feature_request.md) that explains the feature you'd like to see, why you need it, and how it should work.
 
@@ -50,9 +50,9 @@ Here's how to contribute and submit your pull request:
 2. [**Create a branch**](https://guides.github.com/introduction/flow/) from `master` for your changes.
 3. **Add, commit, and push** your changes to your branch.
 4. **Test out your changes.** Make sure you didn't break anything. :smile:
-4. [**Open a pull request**](https://github.com/jolaleye/snap/pulls) to merge your branch into `master`.
-    - Reference any issues related to your PR (e.g. "Closes #123").
-    - Describe your changes in detail and include all of the information in the template.
-5. :sunglasses: Sit back, relax, and wait for your PR to be reviewed. You might have to tweak your contribution or elaborate on your changes. That's OK, don't be afraid to justify your reasoning and ask questions.
+5. [**Open a pull request**](https://github.com/jolaleye/snap/pulls) to merge your branch into `master`.
+   - Reference any issues related to your PR (e.g. "Closes #123").
+   - Describe your changes in detail and include all of the information in the template.
+6. :sunglasses: Sit back, relax, and wait for your PR to be reviewed. You might have to tweak your contribution or elaborate on your changes. That's OK, don't be afraid to justify your reasoning and ask questions.
 
 Thank you for reading through this contributing guide and welcome to the community! :v: :tada:

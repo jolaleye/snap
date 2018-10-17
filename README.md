@@ -33,7 +33,8 @@ snap save <name> [source] [options]
 `<name>` should be something short and memorable so that you can use it later. `[source]` can be a local path to a directory (e.g. `./starter`) or a Git repository URL (e.g. `https://github.com/user/starter.git`). Providing a source is optional. If you don't, the current working directory will be saved.
 
 **Options:**
-  - `-o`, `--overwrite`: Overwrite an existing boilerplate that has the same name
+
+- `-o`, `--overwrite`: Overwrite an existing boilerplate that has the same name
 
 ### snap
 
@@ -43,10 +44,11 @@ When you want to use a boilerplate you have saved, run:
 snap <boilerplate-name> <project-directory> [options]
 ```
 
-`<boilerplate-name>` should be the name of a boilerplate you have saved. `<project-directory>` should be a local path to the project you want to create. For example, if you want to create a project called *my-project* with a boilerplate called *starter*, you should run `snap starter ./my-project`.
+`<boilerplate-name>` should be the name of a boilerplate you have saved. `<project-directory>` should be a local path to the project you want to create. For example, if you want to create a project called _my-project_ with a boilerplate called _starter_, you should run `snap starter ./my-project`.
 
 **Options:**
-  - `-i`, `--install`: Automatically run `npm install` after creating the project
+
+- `-i`, `--install`: Automatically run `npm install` after creating the project
 
 ### ls
 
