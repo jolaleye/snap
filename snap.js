@@ -27,7 +27,7 @@ cli
 // start up a new project
 cli
   .arguments('<boilerplate-name> <project-directory>')
-  .option('-i, --install', 'run \'npm install\' after creating a project')
+  .option('-i, --install', "run 'npm install' after creating a project")
   .action(snap);
 
 // save - save a directory or repository to a name
@@ -65,7 +65,7 @@ cli
   .description('delete a saved boilerplate')
   .on('--help', () => {
     console.log(`\n${chalk.yellow('<names...>')} can be one or more names of saved boilerplates.`);
-    console.log(`You can check out what you\'ve saved with ${chalk.yellow('snap ls')}.\n`);
+    console.log(`You can check out what you've saved with ${chalk.yellow('snap ls')}.\n`);
   })
   .action(rm);
 

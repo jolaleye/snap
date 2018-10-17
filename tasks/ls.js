@@ -11,7 +11,7 @@ function ls() {
   const vault = path.join(os.homedir(), '.snap');
   const list = shell.ls(vault);
   if (!list.length) {
-    console.log('\nIt seems you don\'t have anything saved...');
+    console.log("\nIt seems you don't have anything saved...");
     console.log(`You can run ${chalk.yellow('snap save')} to save a directory or Git repo for future use!`);
     console.log(`Run ${chalk.yellow('snap save -h')} for more info.\n`);
     return;
