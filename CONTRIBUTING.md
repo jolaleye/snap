@@ -36,7 +36,7 @@ If you find yourself wishing for a feature that doesn't exist yet, you're probab
 
 ### :sparkles: Opening a Pull Request
 
-A lot of the following information was inspired by [opensource.guide](https://opensource.guide/how-to-contribute/), a great site to learn all about open source software.
+> A lot of the following information was inspired by [opensource.guide](https://opensource.guide/how-to-contribute/), a great site to learn all about open source software.
 
 If you've fixed a bug, started working on a feature, improved documentation, or done something else, you can [create a pull request](https://github.com/jolaleye/snap/pulls) to start a conversation about your changes.
 
